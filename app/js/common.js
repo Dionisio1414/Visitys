@@ -52,7 +52,15 @@ $(function() {
 		$rangeSlider.slider('values', 0, $valueResult);
 	});
 	
-	$dropdownsSelect.niceScroll();
+	$dropdownsSelect.niceScroll({
+        cursoropacitymin: 1,
+        cursorborderradius: "4px",
+        background: "transparet",
+        cursorwidth: "15px",
+        cursorborder: "none",
+        cursorcolor: "#56CCF2",
+        autohidemode: "leave"
+    });
 	
 	
 	$selectCountry.click(function(e) {
