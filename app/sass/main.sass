@@ -1,0 +1,229 @@
+@import "vars"
+@import "fonts"
+@import "libs"
+
+::placeholder
+	color: #BEBEBE
+
+::selection
+	background-color: $accent
+	color: #fff
+
+html
+    overflow: hidden
+body
+	background-color: $bgclr
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	font-family: $default-font
+	overflow: hidden
+	min-height: 100%
+	height: 100%
+	color: $text
+	input, textarea
+		border: #666 1px solid
+		outline: none
+		&:focus:required:invalid
+			border-color: red
+		&:required:valid
+			border-color: green
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+	&.img-width
+		width: 100%
+
+.text-center
+	text-align: center
+
+b, strong
+	font-weight: bold
+
+h1
+	font-family: $bold
+	font-size: 48px
+	color: $accent
+
+input
+	background-color: transparent
+	font-family: $default-font
+	font-size: 18px
+	border-radius: 4px
+	border: 1px solid #bebebe
+	padding: 2px 5px 3px 20px
+	width: 100%
+	color: #bebebe
+
+.slider-custom-arrows
+	padding: 0
+	margin: 0
+	list-style-type: none
+	width: 100%
+	position: absolute
+	top: 50%
+	left: 0
+	transform: translateY(-50%)
+	pointer-events: none
+	.prev
+		float: left
+		pointer-events: visible
+		cursor: pointer
+		img
+			transform: rotate(-180deg)
+	.next
+		float: right
+		pointer-events: visible
+		cursor: pointer
+
+.main
+	&__left-part
+		header
+			display: flex
+			padding-top: 8px
+			overflow: hidden
+			.logo
+				display: block
+				max-width: 140px
+				height: 140px
+				margin-right: 27px
+			nav
+				margin-top: 22px
+				ul
+					padding: 0
+					margin: 0
+					list-style-type: none
+					font-size: 0
+					li
+						display: inline-block
+						margin-right: 68px
+						a
+							font-size: 20px
+							text-transform: uppercase
+							text-decoration: none
+							color: #fff
+						&:last-child
+							margin-right: 0
+	&__right-part
+		position: relative
+		padding-top: 23px
+		.slider
+			&__calculator
+				max-width: 600px
+				margin: 0 auto
+				.main-description
+					margin-bottom: 33px
+					p
+						font-size: 20px
+						line-height: 24px
+						color: $text
+				.calc
+					width: 100%
+					margin-bottom: 20px
+					&:last-child
+						margin-bottom: 0
+					&.range
+						display: flex	
+						> div
+							&:nth-child(1)
+								flex: 0 0 22%
+								margin-right: 3%
+								span
+									font-size: 18px
+									line-height: 22px
+							&:nth-child(2)
+								flex: 0 0 50%
+								.range-slider
+									background-color: transparent
+									border: 1px solid #bebebe
+									height: 15px
+									.ui-slider-handle
+										border-radius: 50%
+										background-color: $accent
+										border: none
+										width: 20px
+										height: 20px
+										outline: none
+										&:last-child
+											display: none
+									.ui-widget-header
+										background-color: transparent
+							&:nth-child(3)
+								flex: 0 0 22%
+								margin-left: 3%
+					&.multiselects
+						display: flex
+						justify-content: space-between
+						input
+							padding-left: 50px
+							color: #fff
+							cursor: pointer
+						.select-country,
+						.select-interests
+							position: relative
+							cursor: pointer
+							.icons
+								position: absolute
+								top: 0
+								left: 0
+								width: 100%
+								height: 36px
+								display: flex
+								justify-content: space-between
+								align-items: center
+								.icon
+									margin-left: 15px
+								.arrow
+									margin-right: 15px
+									&.open
+										img
+											transform: rotate(180deg)
+							.dropdown
+								display: none
+								background-color: #2E3355
+								width: 100%
+								border-radius: 0 0 4px 4px
+								max-height: 135px
+								overflow: auto
+								ul
+									padding: 10px 15px
+									margin: 0
+									list-style-type: none
+									li
+										position: relative
+										text-align: center
+										margin-bottom: 15px
+										&:last-child
+											margin-bottom: 0
+										input
+											position: absolute
+											margin: 0
+											z-index: -1
+											opacity: 0
+											+ label
+												width: 100%
+												margin: 0
+												cursor: pointer
+												span
+													font-family: $lightweight
+													font-size: 16px
+													transition: all .5s ease-in-out
+											&:checked
+												+ label
+													span
+														color: $accent
+										&:hover
+											label
+												span
+													color: $accent
+												
+						.select-country
+							flex: 0 0 47% 
+						.select-interests
+							flex: 0 0 47%
+					
+	
+@import "media" // Always at the end
