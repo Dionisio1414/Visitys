@@ -10,7 +10,7 @@
 	color: #fff
 
 html
-    overflow: hidden
+    overflow-x: hidden
 body
 	background-color: $bgclr
 	font-size: 16px
@@ -18,8 +18,8 @@ body
 	position: relative
 	line-height: 1.65
 	font-family: $default-font
-	overflow: hidden
-	min-height: 100%
+	overflow-x: hidden
+	min-height: 100vh
 	height: 100%
 	color: $text
 	input, textarea
@@ -29,6 +29,9 @@ body
 			border-color: red
 		&:required:valid
 			border-color: green
+	.fixed-background
+		position: absolute
+		bottom: -1px
 
 .img-responsive
 	display: block
@@ -182,6 +185,7 @@ input
 										img
 											transform: rotate(180deg)
 							.dropdown
+								position: absolute
 								display: none
 								background-color: #2E3355
 								width: 100%
@@ -224,6 +228,52 @@ input
 							flex: 0 0 47% 
 						.select-interests
 							flex: 0 0 47%
-					
+					&.table-time
+						caption
+							font-family: $default-font
+							text-align: center
+							font-size: 18px
+							caption-side: top
+							padding: 0
+							color: $text
+						thead
+							tr
+								th
+									border: none
+									padding: 0
+									padding-bottom: 5px
+									font-size: 18px
+									text-align: center
+									color: $text
+						tbody
+							line-height: 16.5px
+							tr
+								th
+									border: none
+									font-size: 18px
+									text-align: left
+									padding: 0
+									width: 22px
+									padding-right: 10px
+									padding-bottom: 3px
+									color: $text
+								td
+									border: 1px solid #fff
+									padding: 0
+									font-size: 18px
+									width: 22px
+									color: $text
+									div
+										width: 19px
+										height: 13px
+										margin: 2px auto 2px auto
+									&.table-selected
+										div
+											background-color: $subaccent
+					&.deadlines
+						display: flex	
+						justify-content: space-between
+						> div
+							flex: 0 0 30%
 	
 @import "media" // Always at the end
