@@ -69,6 +69,10 @@
 											</div>
 											<div>
 												<div class="range-slider"></div>
+												<div class="labels-slide">
+													<div><span></span></div>
+													<div><span></span></div>
+												</div>
 											</div>
 											<div>
 												<input type="text" name="result" id="result">
@@ -125,13 +129,61 @@
 														<li>
 															<input type="checkbox" id="insterest-3">
 															<label for="insterest-3"><span>Заработок в интернете/Веб-дизайн </span></label>
+														</li>												<li>
+															<input type="checkbox" id="insterest-4">
+															<label for="insterest-4"><span>Коммуникации/Электроник</span></label>
+														</li>
+														<li>
+															<input type="checkbox" id="insterest-4">
+															<label for="insterest-4"><span>Личное</span></label>
+														</li>												<li>
+															<input type="checkbox" id="insterest-5">
+															<label for="insterest-5"><span>Недвижимость</span></label>
+														</li>
+														<li>
+															<input type="checkbox" id="insterest-6">
+															<label for="insterest-6"><span>Общество/CМИ</span></label>
+														</li>												<li>
+															<input type="checkbox" id="insterest-7">
+															<label for="insterest-7"><span>Путешествия/Туризм</span></label>
+														</li>
+														<li>
+															<input type="checkbox" id="insterest-8">
+															<label for="insterest-8"><span>Развлечения и игры/Скачать</span></label>
+														</li>												<li>
+															<input type="checkbox" id="insterest-9">
+															<label for="insterest-9"><span>Реклама/Справки</span></label>
+														</li>
+														<li>
+															<input type="checkbox" id="insterest-10">
+															<label for="insterest-10"><span>Строительство/Ремонт</span></label>
+														</li>
+														<li>
+															<input type="checkbox" id="insterest-11">
+															<label for="insterest-11"><span>Учёба/Работа</span></label>
+														</li>
+														<li>
+															<input type="checkbox" id="insterest-12">
+															<label for="insterest-12"><span>Финансы</span></label>
+														</li>
+														<li>
+															<input type="checkbox" id="insterest-13">
+															<label for="insterest-13"><span>Шопинг/Женское</span></label>
+														</li>
+														<li>
+															<input type="checkbox" id="insterest-14">
+															<label for="insterest-14"><span>Эротика/Сайты для взрослых</span></label>
+														</li>
+														<li>
+															<input type="checkbox" id="insterest-15">
+															<label for="insterest-15"><span>Разное</span></label>
 														</li>
 													</ul>
 												</div>
 											</div>
 										</div>
 										<div class="calc table-time">
-										     <table class="table" title="Выберите в какое время пользователи будут направляться к вам на сайт (по умолчанию выбрано всё)">
+										     <table title="Выберите в какое время пользователи будут направляться к вам на сайт (по умолчанию выбрано всё)">
                                                 <caption>Расписание по дням</caption>
                                                 <thead>
                                                      <tr>
@@ -338,22 +390,132 @@
 										<div class="calc deadlines">
 											<div class="datepicker">
 												<input type="text" id="datepicker">
+												<div class="icons">
+													<div class="icon">
+														<img src="img/icons/date_of_start.svg" alt="">
+													</div>
+												</div>
 											</div>
 											<div class="month">
-												<input type="text" name="select-month" id="select-month">
+												<input type="text" name="select-month" id="select-month" readonly value="1 месяц">
+												<div class="icons">
+													<div class="icon">
+														<img src="img/icons/months_quantity.svg" alt="">
+													</div>
+													<div class="arrow">
+														<img src="img/icons/angle_bottom.svg" alt="">
+													</div>
+												</div>
+												<div class="dropdown">
+													<ul>
+														<li>
+															<a href="#">
+																1 месяц
+															</a>
+														</li>
+														<li>
+															<a href="#">
+																2 месяца(-2%)
+															</a>
+														</li>
+														<li>
+															<a href="#">
+																3 месяца(-3%)
+															</a>
+														</li>
+														<li>
+															<a href="#">
+																4 месяца(-4%)
+															</a>
+														</li>
+														<li>
+															<a href="#">
+																5 месяцев(-5%)
+															</a>
+														</li>
+														<li>
+															<a href="#">
+																6 месяцев(-6%)
+															</a>
+														</li>
+														<li>
+															<a href="#">
+																10 месяцев(-10%)
+															</a>
+														</li>
+														<li>
+															<a href="#">
+																12 месяцев(-12%)
+															</a>
+														</li>
+														<li>
+															<a href="#">
+																15 месяцев(-15%)
+															</a>
+														</li>
+														<li>
+															<a href="#">
+																18 месяцев(-18%)
+															</a>
+														</li>
+														<li>
+															<a href="#">
+																24 месяцев(-24%)
+															</a>
+														</li>
+													</ul>
+												</div>
 											</div>
 											<div class="promocode">
-												<input type="text" name="promocode" id="promocode">
+												<input type="text" name="promocode" id="promocode" placeholder="Ввести промокод">
+											</div>
+										</div>
+										<div class="calc result-calc">
+											<div>
+												<p>45 000 ₴</p>
+												<span>500 ₴/1000 посетителей</span>
+											</div>
+											<div>
+												<button type="button">Купить</button>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div>
-								
+								<div class="slider__description">
+									<h2>Покупка посетителей на сайт</h2>
+									<p>Покупка трафика на сайт – эффективный метод, который раз и навсегда решает вопрос с посещаемостью сайта и позволяет обеспечить стабильный поток клиентов.</p>
+									<p>Это привлечет пользователей с других сайтов, в том числе и тематических, на Ваш сайт с помощью перенаправления посетителей.</p>
+									<p>SEO, PPC и другие методы, безусловно являются хорошими способами привлечь ценных посетителей, но на это нужно много времени и денег, чтобы получить хорошие результаты. Один из способов помочь вам получить результаты быстрее - это покупка трафика. </p>
+									<p>И платформа <span class="visitus-color word word1"><span>V</span><span>i</span><span>s</span><span>i</span><span>t</span><span>y</span><span>s</span></span> – эксперт в приобретении посетителей на сайт.</p>
+									<p>Покупка трафика на сайт позволяет мгновенно в тот же день, направить посетителей других сайтов на Ваш сайт ресурс. Без каких-либо рекламных кампаний, промо-акций, баннеров и продвижения – посетители здесь и сейчас и не нужно ждать. </p>
+									<p>И стоит это абсолютно недорого.</p>
+								</div>
 							</div>
 							<div>
-								
+								<div class="slider__description">
+									<h2>Откуда берется трафик (посетители) на сайт</h2>
+									<p>
+									   <span class="visitus-color word word1"><span>V</span><span>i</span><span>s
+									   </span><span>i</span><span>t</span><span>y</span><span>s</span></span> - это
+									   платформа с помощью, которой можно приобрести трафик на свой сайт
+									   из любой страны мира, благодаря огромнейшей сети сайтов <span class="visitus-color word word1"><span>V</span><span>i</span><span>s
+									   </span><span>i</span><span>t</span><span>y</span><span>s</span></span>. Теперь
+									   нет проблем, как расширить бизнес до международного уровня - просто закажите
+									   посетителей к себе на сайт из других стран и международный бизнес готов!
+									</p>
+									<p>Основная цель платформы – это качественное перераспределение посетителей
+                                       между сайтами сети. Теперь если Вам недостаточно посетителей и
+                                       клиентов на сайте или Вы ищите новые каналы для привлечения трафика на
+                                       сайт, Вы можете с легкостью заказать трафик на нашей платформе.
+                                    </p>
+                                    <p>Основная цель платформы – это качественное перераспределение посетителей
+                                       между сайтами сети. Теперь если Вам недостаточно посетителей и
+                                       клиентов на сайте или Вы ищите новые каналы для привлечения трафика на
+                                       сайт, Вы можете с легкостью заказать трафик на нашей платформе.
+                                   </p>
+								</div>
 							</div>
 							<div>
 								

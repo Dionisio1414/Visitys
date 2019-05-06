@@ -1,0 +1,5 @@
+@mixin delTrans($num)
+	span
+		@for $i from 1 through $num
+			&:nth-child(#{$i})
+				transition-delay: ($i / 10) + 0s

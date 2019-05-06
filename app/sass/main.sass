@@ -1,6 +1,7 @@
 @import "vars"
 @import "fonts"
 @import "libs"
+@import "_mixins/deltrans"
 
 ::placeholder
 	color: #BEBEBE
@@ -18,7 +19,7 @@ body
 	position: relative
 	line-height: 1.65
 	font-family: $default-font
-	overflow-x: hidden
+	overflow: hidden
 	min-height: 100vh
 	height: 100%
 	color: $text
@@ -32,6 +33,7 @@ body
 	.fixed-background
 		position: absolute
 		bottom: -1px
+		width: 100%
 
 .img-responsive
 	display: block
@@ -50,6 +52,10 @@ h1
 	font-family: $bold
 	font-size: 48px
 	color: $accent
+h2
+	@extend h1
+	font-size: 40px
+	letter-spacing: .8px
     
 input
 	background-color: transparent
@@ -57,7 +63,7 @@ input
 	font-size: 18px
 	border-radius: 4px
 	border: 1px solid #bebebe
-	padding: 2px 5px 3px 20px
+	padding: 2px 5px 1px 20px
 	width: 100%
 	color: #bebebe
 
@@ -67,8 +73,8 @@ input
 	list-style-type: none
 	width: 100%
 	position: absolute
-	top: 50%
-	left: 0
+	top: 55%
+	left: -19px
 	transform: translateY(-50%)
 	pointer-events: none
 	.prev
@@ -108,15 +114,19 @@ input
 							text-transform: uppercase
 							text-decoration: none
 							color: #fff
+							transition: all .25s ease-in-out
 						&:last-child
 							margin-right: 0
+						&:hover
+							a
+								color: $accent
 	&__right-part
 		position: relative
 		padding-top: 23px
 		.slider
 			&__calculator
 				max-width: 600px
-				margin: 0 auto
+				margin: 0 auto 0 26px
 				.main-description
 					margin-bottom: 33px
 					p
@@ -125,24 +135,27 @@ input
 						color: $text
 				.calc
 					width: 100%
-					margin-bottom: 20px
+					margin-bottom: 11px
 					&:last-child
 						margin-bottom: 0
 					&.range
-						display: flex	
+						display: flex
+						margin-bottom: 24px
 						> div
 							&:nth-child(1)
 								flex: 0 0 22%
 								margin-right: 3%
 								span
+									display: block
 									font-size: 18px
-									line-height: 22px
+									line-height: 19px
 							&:nth-child(2)
 								flex: 0 0 50%
 								.range-slider
 									background-color: transparent
 									border: 1px solid #bebebe
 									height: 15px
+									margin-top: 5px
 									.ui-slider-handle
 										border-radius: 50%
 										background-color: $accent
@@ -154,9 +167,17 @@ input
 											display: none
 									.ui-widget-header
 										background-color: transparent
+								.labels-slide
+									display: flex
+									justify-content: space-between
+									width: 100%
+									> div
+										span
+											font-size: 14px
 							&:nth-child(3)
 								flex: 0 0 22%
 								margin-left: 3%
+								margin-top: 3px
 					&.multiselects
 						display: flex
 						justify-content: space-between
@@ -180,7 +201,7 @@ input
 								.icon
 									margin-left: 15px
 								.arrow
-									margin-right: 15px
+									margin-right: 10px
 									&.open
 										img
 											transform: rotate(180deg)
@@ -207,6 +228,8 @@ input
 											margin: 0
 											z-index: -1
 											opacity: 0
+											width: 100%
+											height: 100%
 											+ label
 												width: 100%
 												margin: 0
@@ -215,10 +238,9 @@ input
 													font-family: $lightweight
 													font-size: 16px
 													transition: all .5s ease-in-out
-											&:checked
-												+ label
-													span
-														color: $accent
+												&.checked
+														span
+															color: $accent
 										&:hover
 											label
 												span
@@ -229,51 +251,178 @@ input
 						.select-interests
 							flex: 0 0 47%
 					&.table-time
-						caption
-							font-family: $default-font
-							text-align: center
-							font-size: 18px
-							caption-side: top
-							padding: 0
-							color: $text
-						thead
-							tr
-								th
-									border: none
-									padding: 0
-									padding-bottom: 5px
-									font-size: 18px
-									text-align: center
-									color: $text
-						tbody
-							line-height: 16.5px
-							tr
-								th
-									border: none
-									font-size: 18px
-									text-align: left
-									padding: 0
-									width: 22px
-									padding-right: 10px
-									padding-bottom: 3px
-									color: $text
-								td
-									border: 1px solid #fff
-									padding: 0
-									font-size: 18px
-									width: 22px
-									color: $text
-									div
-										width: 19px
-										height: 13px
-										margin: 2px auto 2px auto
-									&.table-selected
+						margin: 22px 0
+						table
+							width: 100%
+							max-width: 100%
+							caption
+								font-family: $default-font
+								text-align: center
+								font-size: 18px
+								caption-side: top
+								padding: 0
+								color: $text
+							thead
+								tr
+									th
+										border: none
+										padding: 0
+										padding-bottom: 5px
+										font-size: 18px
+										text-align: center
+										color: $text
+							tbody
+								line-height: 17.5px
+								tr
+									th
+										border: none
+										font-size: 18px
+										text-align: left
+										padding: 0
+										width: 22px
+										padding-right: 10px
+										color: $text
+									td
+										border: 1px solid #fff
+										padding: 0
+										font-size: 0
+										width: 22px
+										vertical-align: middle
+										border-color: #FBFBFB
+										border-width: .5px
+										color: $text
 										div
-											background-color: $subaccent
+											display: block
+											width: 19px
+											height: 13px
+											margin: 0 auto
+										&.table-selected
+											div
+												background-color: $subaccent
 					&.deadlines
 						display: flex	
 						justify-content: space-between
+						margin-bottom: 49px
 						> div
 							flex: 0 0 30%
-	
+							position: relative
+							cursor: pointer
+							&.month
+								input
+									text-align: center
+							&.promocode
+								input
+									padding-left: 14px
+							&.datepicker
+								.icons
+									pointer-events: none
+								input
+									text-align: center
+									pointer-events: visible
+							.icons
+								position: absolute
+								top: 0
+								left: 0
+								width: 100%
+								height: 36px
+								display: flex
+								justify-content: space-between
+								align-items: center
+								.icon
+									margin-left: 10px
+								.arrow
+									margin-right: 10px
+									&.open
+										img
+											transform: rotate(180deg)
+							.dropdown
+								position: absolute
+								display: none
+								background-color: #2E3355
+								width: 100%
+								border-radius: 0 0 4px 4px
+								max-height: 160px
+								overflow: auto
+								ul
+									padding: 10px 15px
+									margin: 0
+									list-style-type: none
+									li
+										text-align: center
+										margin-bottom: 15px
+										&:last-child
+											margin-bottom: 0
+										a
+											font-family: $lightweight
+											font-size: 16px
+											text-decoration: none
+											transition: all .5s ease-in-out
+											color: $text
+										&:hover
+											a
+												color: $subaccent
+					&.result-calc
+						display: flex
+						justify-content: space-between
+						align-items: center
+						> div
+							&:first-child
+								flex: 0 0 41%
+							&:last-child
+								flex: 0 0 54%
+							p
+								font-size: 42px
+								text-align: center
+								margin-bottom: 0
+								line-height: 55px
+								color: #56CCF2
+							span
+								display: block
+								font-size: 14px
+								text-align: center
+								color: $text
+							button
+								background-color: #BEBEBE
+								font-family: $bold
+								font-size: 30px
+								border: none
+								outline: none
+								text-transform: uppercase
+								border-radius: 27px
+								padding: 16px 40px
+								line-height: 30px
+								letter-spacing: 3px
+								width: 280px
+								color: $bgclr
+								transition: all .25s ease-in-out
+								&:active,
+								&:hover
+									background-color: $subaccent
+									box-shadow: 0px 6px 13px rgba(86, 204, 242, 0.25)
+									color: #fff
+			&__description
+				max-width: 600px
+				margin: 0 auto 0 24px
+				h2
+					margin-bottom: 52px
+				p
+					font-size: 20px
+					line-height: 24px
+					margin-bottom: 13px
+					&:last-child
+						margin-bottom: 0
+					.word
+						color: $accent
+					.word1
+						+delTrans($word1-len)
+						span
+							display: inline-block
+							text-indent: 0
+							transition: transform 1s linear, color 2s linear
+						&:hover
+							span
+								transform: rotateX(-360deg)
+					
+		
+
 @import "media" // Always at the end
