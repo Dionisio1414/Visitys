@@ -422,6 +422,24 @@ input
 						&:hover
 							span
 								transform: rotateX(-360deg)
+				ol
+					margin: 0
+					padding: 0 0 0 20px
+					li
+						font-size: 20px
+						line-height: 24px
+						margin-bottom: 10px
+						.word
+							color: $accent
+						.word1
+							+delTrans($word1-len)
+							span
+								display: inline-block
+								text-indent: 0
+								transition: transform 1s linear, color 2s linear
+							&:hover
+								span
+									transform: rotateX(-360deg)
 					
 		
 
