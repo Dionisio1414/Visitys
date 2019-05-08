@@ -357,6 +357,7 @@ input
 											font-size: 16px
 											text-decoration: none
 											transition: all .5s ease-in-out
+											outline: none
 											color: $text
 										&:hover
 											a
@@ -402,7 +403,16 @@ input
 									color: #fff
 			&__description
 				max-width: 600px
+				overflow: auto
 				margin: 0 auto 0 24px
+				.overflow-container
+					max-height: 620px
+					overflow-y: auto
+					&::-webkit-scrollbar
+						border: 1px solid #4180A3
+					&::-webkit-scrollbar-thumb
+						background-color: #56CCF2
+						border-radius: 4px
 				h2
 					margin-bottom: 52px
 				p

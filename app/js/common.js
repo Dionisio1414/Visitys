@@ -6,7 +6,9 @@ $(function() {
 		$dropdownsSelect = $('.main__right-part .slider__calculator .dropdown'),
 		$datepickers = $('.main__right-part .slider__calculator .calc.deadlines .datepicker #datepicker'),
 		$monthSelects = $('.main__right-part .slider__calculator .calc.deadlines .month .icons'),
-		$flag = 0;
+		$flag = 0,
+		$overflowContainer = $('.main__right-part .slider__description .overflow-container'),
+		$cellsTable = $('.main__right-part .slider__calculator .calc.table-time table tbody tr td');
 	
 	$mainSlider.slick({
 		slidesToShow: 1,
@@ -72,6 +74,16 @@ $(function() {
         autohidemode: "leave"
     });
 	
+//	$overflowContainer.niceScroll({
+//		cursoropacitymin: 1,
+//        cursorborderradius: "4px",
+//        background: "transparet",
+//        cursorwidth: "15px",
+//        cursorborder: "none",
+//        cursorcolor: "#56CCF2",
+//        autohidemode: "leave"
+//	});
+	
 	$datepickers.datepicker({
 		buttonText: "Select date"
 	});
@@ -94,9 +106,10 @@ $(function() {
 	});
 	
 	$('.main__right-part .slider__calculator .calc.multiselects .select-country .dropdown ul li input+label, .main__right-part .slider__calculator .calc.multiselects .select-interests .dropdown ul li input+label').click(function() {
-		var $inputValue = $(this).siblings('input'),
+		var $input = $(this).siblings('input'),
 			$spanValue = $(this).text(),
 			$test = ++$flag%2;
+		console.log($input);
 		if($test) {
 			$(this).siblings('input').prop('checked', true);
 			$(this).addClass('checked');
@@ -104,6 +117,17 @@ $(function() {
 			$(this).siblings('input').prop('checked', false);
 			$(this).removeClass('checked');
 		}
+	});
+	
+	
+	$cellsTable.mousedown(function() {
+		$(this).toggleClass('table-selected');
+		$(this).on('mouseenter', function() {
+			$(this).toggleClass('table-selected');
+		});
+	})
+	.mouseup(function() {
+		$(this).off('mouseenter');
 	});
 	
 		
