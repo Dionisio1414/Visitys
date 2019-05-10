@@ -11,7 +11,7 @@
 	color: #fff
 
 html
-    overflow-x: hidden
+    overflow: hidden
 body
 	background-color: $bgclr
 	font-size: 16px
@@ -88,6 +88,48 @@ input
 		pointer-events: visible
 		cursor: pointer
 
+
+.modal-form
+    position: fixed
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    background-color: #2E3355
+    border-radius: 10px
+    padding: 18px 44px 44px 44px
+    z-index: 10
+    width: 1095px
+    .modal-close
+        position: absolute
+        top: 20px
+        right: 20px
+        cursor: pointer
+        svg
+            width: 44px
+            height: 44px
+    .modal-top
+        h2
+            text-align: center
+            font-size: 28px
+            margin-bottom: 27px
+            color: #3C8AFF
+        .paragraph-logo
+            position: absolute
+            top: 16px
+            left: 106px
+            img
+                width: 90px
+                height: 90px
+    .modal-bottom
+        p
+            font-size: 18px
+            line-height: 22px
+            text-indent: 50px
+            margin-bottom: 35px
+            &:first-child
+                text-indent: 170px
+            &:last-child
+                margin-bottom: 0
 .main
 	&__left-part
 		header
