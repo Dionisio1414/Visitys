@@ -93,16 +93,26 @@ input
     position: fixed
     top: 50%
     left: 50%
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%) scale(1.2)
     background-color: #2E3355
     border-radius: 10px
     padding: 18px 44px 44px 44px
     z-index: 10
     width: 1095px
+    height: 595px
+    opacity: 0
+    visibility: hidden
+    backface-visibility: hidden
+    transition: all 0.6s cubic-bezier(0.55, 0, 0.1, 1)
+    &.active
+        visibility: visible
+        opacity: 1
+        transform: translate(-50%, -50%) scale(1)
     .modal-close
         position: absolute
         top: 20px
         right: 20px
+        text-indent: 0!important
         cursor: pointer
         svg
             width: 44px
@@ -115,21 +125,149 @@ input
             color: #3C8AFF
         .paragraph-logo
             position: absolute
-            top: 16px
-            left: 106px
+            top: 23px
+            left: 97px
             img
-                width: 90px
-                height: 90px
+                width: 70px
+                height: 70px
+    .modal-tabs
+        margin-bottom: 20px
+        ul
+            padding: 0
+            margin: 0
+            list-style-type: none
+            display: flex
+            justify-content: space-between
+            li
+                display: inline-block
+                cursor: pointer
+                a
+                    display: inline-block
+                    font-family: $semibold
+                    font-size: 20px
+                    text-decoration: none
+                    vertical-align: middle
+                    padding-bottom: 1px
+                    border-bottom: 1px solid #fff
+                    color: $text
+                    transition: all .35s ease-in-out
+                i
+                    font-size: 24px
+                    vertical-align: middle
+                    margin-left: 11px
+                    transition: all .25s ease-in-out
+                &:hover
+                    a
+                        border-color: $subaccent
+                        color: $subaccent
+                    i
+                        color: $subaccent
+                &.active
+                    a
+                        border-color: $subaccent
+                        color: $subaccent
+                    i
+                        color: $subaccent
+                    
     .modal-bottom
         p
             font-size: 18px
             line-height: 22px
-            text-indent: 50px
             margin-bottom: 35px
-            &:first-child
-                text-indent: 170px
             &:last-child
                 margin-bottom: 0
+            span
+                &.accent-text
+                    color: $subaccent
+    .modal-main-tab
+        display: none
+        &.active
+            display: block
+        .tab-list
+            ul
+                padding: 0
+                margin: 0
+                list-style-type: none
+                li
+                    margin-bottom: 20px
+                    cursor: pointer
+                    a
+                        display: inline-block
+                        font-size: 18px
+                        text-decoration: none
+                        white-space: pre-line
+                        color: $text
+                        max-width: 400px
+                        border-bottom: .5px solid #fff
+                        padding-bottom: 10px
+                        line-height: 22px
+                        transition: all .35s ease-in-out
+                    i
+                        font-size: 24px
+                        margin-left: 25px
+                        transition: all .35s ease-in-out
+                    &:last-child
+                        margin-bottom: 0
+                    &:hover
+                        a
+                            border-color: $subaccent
+                            color: $subaccent
+                        i
+                            color: $subaccent
+                    &.active
+                        a
+                            border-color: $subaccent
+                            color: $subaccent
+                        i
+                            color: $subaccent
+        .tab-content
+            display: none
+            max-height: 400px
+            overflow-y: auto
+            &::-webkit-scrollbar
+                border: 1px solid #4180A3
+            &::-webkit-scrollbar-thumb
+                background-color: #56CCF2
+                border-radius: 4px
+            h3
+                text-align: center
+                margin-bottom: 15px
+            ol
+                padding: 0
+                padding-left: 25px
+                margin: 0
+                li
+                    font-size: 18px
+                    line-height: 18px
+                    margin-bottom: 8px
+            p
+                font-size: 18px
+                line-height: 22px
+                margin-bottom: 10px
+                text-indent: 2.5em
+            &.active
+                display: block
+                    
+    &.about-service
+        p
+            text-indent: 50px
+            &:first-child
+                text-indent: 160px
+    
+            
+.modal-overlay
+    position: fixed
+    width: 100%
+    height: 100%
+    background-color: rgba(#01061D, .6) 
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: 9
+    opacity: 0
+    display: none
+                
 .main
 	&__left-part
 		header
