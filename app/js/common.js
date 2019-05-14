@@ -3,6 +3,7 @@ $(function() {
 		$rangeSlider = $('.main__right-part .slider__calculator .calc.range .range-slider'),
 		$selectCountry = $('.main__right-part .slider__calculator .calc.multiselects .select-country .icons'),
 		$selectInterests = $('.main__right-part .slider__calculator .calc.multiselects .select-interests .icons'),
+        $selectCountr = $('.modal-form .content .select-countr .icons'),
 		$dropdownsSelect = $('.main__right-part .slider__calculator .dropdown'),
 		$datepickers = $('.main__right-part .slider__calculator .calc.deadlines .datepicker #datepicker'),
 		$monthSelects = $('.main__right-part .slider__calculator .calc.deadlines .month .icons'),
@@ -11,11 +12,7 @@ $(function() {
 		$cellsTable = $('.main__right-part .slider__calculator .calc.table-time table tbody tr td'),
         $hdrMnu = $('.main__left-part header nav ul li a'),
         $modalClose = $('.modal-form .modal-close'),
-        $modalOverlay = $('.modal-overlay'),
-        $modalTabs = $('.modal-form .modal-tabs ul li a'),
-        $modalMainTabs = $('.modal-form .modal-main-tab'),
-        $tabList = $('.modal-form .modal-main-tab .tab-list ul li a'),
-        $subTab = $('.modal-form .modal-main-tab .tab-content');
+        $modalOverlay = $('.modal-overlay');
         
 	
 	$mainSlider.slick({
@@ -114,6 +111,11 @@ $(function() {
 		$(this).siblings('.dropdown').slideToggle();
 	});
 	
+    $selectCountr.click(function() {
+        $(this).find('.arrow').toggleClass('open');
+        $(this).siblings('.dropdown').slideToggle();
+    });
+    
 	$('.main__right-part .slider__calculator .calc.multiselects .select-country .dropdown ul li input+label, .main__right-part .slider__calculator .calc.multiselects .select-interests .dropdown ul li input+label').click(function() {
 		var $input = $(this).siblings('input'),
 			$spanValue = $(this).text(),
@@ -165,18 +167,17 @@ $(function() {
         });
     });
     
-    $modalTabs.click(function(e) {
+    $('.modal-form .modal-tabs ul li a').click(function(e) {
         e.preventDefault();
         $(this).parent().addClass('active').siblings().removeClass('active');
-        $modalMainTabs.removeClass('active').eq($(this).parent().index()).addClass('active');
+        $('.modal-form .modal-main-tab').removeClass('active').eq($(this).parent().index()).addClass('active');
     });
     
     
-    $tabList.click(function(e) {
+    $('.modal-main-tab .tab-list ul li a').click(function(e) {
         e.preventDefault();
         $(this).parent().addClass('active').siblings().removeClass('active');
-        $subTab.removeClass('active').eq($(this).parent().index()).addClass('active');
-        console.log($(this).parent().index());
+        $('.modal-form .modal-main-tab .tab-content').removeClass('active').eq($(this).parent().index()).addClass('active');
     });
 		
 });
