@@ -12,8 +12,8 @@ $(function() {
 		$cellsTable = $('.main__right-part .slider__calculator .calc.table-time table tbody tr td'),
         $hdrMnu = $('.main__left-part header nav ul li a'),
         $modalClose = $('.modal-form .modal-close'),
-        $modalOverlay = $('.modal-overlay');
-        
+        $modalOverlay = $('.modal-overlay'),
+		$mainSelects = $('.main__left-part .main-selects .row-select .col-select .slct .icons');
 	
 	$mainSlider.slick({
 		slidesToShow: 1,
@@ -116,6 +116,11 @@ $(function() {
         $(this).siblings('.dropdown').slideToggle();
     });
     
+	$mainSelects.click(function() {
+		$(this).find('.arrow').toggleClass('open');
+        $(this).siblings('.dropdown').slideToggle();
+	});
+	
 	$('.main__right-part .slider__calculator .calc.multiselects .select-country .dropdown ul li input+label, .main__right-part .slider__calculator .calc.multiselects .select-interests .dropdown ul li input+label').click(function() {
 		var $input = $(this).siblings('input'),
 			$spanValue = $(this).text(),
@@ -199,6 +204,3 @@ function declension(num, expressions) {
     }
     return result;
 }
-
-
-console.log(declension(21, ['страна', 'страны', 'стран']));
