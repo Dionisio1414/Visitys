@@ -411,6 +411,32 @@ input
                 
 .main
 	&__left-part
+		.globus
+			position: absolute
+			top: 0
+			left: 0
+			&__btn
+				position: relative
+				font-family: $bold
+				font-size: 24px
+				text-align: center
+				border-radius: 50%
+				border: 1px solid #fff
+				background-color: transparent
+				width: 30px
+				height: 30px
+				color: $subaccent
+				outline: 0
+				img
+					position: absolute
+					top: 50%
+					left: 50%
+					transform: translate(-50%, -50%)
+			#globe
+				cursor: move
+				width: 100%!important
+				height: 100%!important
+					
 		header
 			display: flex
 			padding-top: 8px
@@ -442,6 +468,8 @@ input
 							a
 								color: $accent
 		.main-selects
+			position: absolute
+			bottom: 0
 			max-width: 240px
 			.row-select
 				display: flex
