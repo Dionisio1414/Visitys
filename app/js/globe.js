@@ -75,13 +75,13 @@ function addOnWheel(elem, handler) {
         text.attachEvent("onmousewheel", handler);
     }
 }
-$('.btn-minus').on({
+$('.minus').on({
     click: function() {
         scaleFactor -= 0.1;
         scale()
     }
 })
-$('.btn-plus').on({
+$('.plus').on({
     click: function() {
         scaleFactor += 0.1;
         scale()
@@ -290,8 +290,6 @@ setAngles()
 /*select list*/
 var countryTooltip = d3.select("body").append("div").attr("class", "countryTooltip"),
     countryList1 = d3.select("main").append("select").attr("name", "countries");
-
-
 
 
 canvas

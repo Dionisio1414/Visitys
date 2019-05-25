@@ -15,6 +15,14 @@ $(function() {
         $modalOverlay = $('.modal-overlay'),
 		$mainSelects = $('.main__left-part .main-selects .row-select .col-select .slct .icons');
 	
+	
+	$mainSlider.on('init', function(e, slick) {
+		var prev = $('.slider-custom-arrows .prev').attr('aria-disabled');
+		if(prev) {
+			$('.slider-custom-arrows .prev').css('opacity', .5);
+		}
+	});
+	
 	$mainSlider.slick({
 		slidesToShow: 1,
 		dots: false,
@@ -23,6 +31,19 @@ $(function() {
 		nextArrow: $('.slider-custom-arrows .next'),
 		infinite: false,
 		draggable: false
+	})
+	.on("afterChange", function(e, slick, currentSlide, nextSlide) {
+		if(currentSlide === 0) {
+			$('.slider-custom-arrows .prev').css({opacity: .5})	
+		} else {
+			$('.slider-custom-arrows .prev').css({opacity: 1})	
+		}
+		
+		if(slick.$slides.length - 1 == currentSlide) {
+			$('.slider-custom-arrows .next').css({opacity: .5})		
+		} else {
+			$('.slider-custom-arrows .next').css({opacity: 1})	
+		}
 	});
 	
 	$rangeSlider.slider({
@@ -121,18 +142,102 @@ $(function() {
         $(this).siblings('.dropdown').slideToggle();
 	});
 	
-	$('.main__right-part .slider__calculator .calc.multiselects .select-country .dropdown ul li input+label, .main__right-part .slider__calculator .calc.multiselects .select-interests .dropdown ul li input+label').click(function() {
-		var $input = $(this).siblings('input'),
-			$spanValue = $(this).text(),
-			$test = ++$flag%2;
-		console.log($input);
+	$('.main__right-part .slider__calculator .calc.multiselects .select-country .dropdown ul li input+label').click(function() {
+		var $input = $(this).closest('.dropdown').siblings('input'),
+			$spanValue,
+			$test = ++$flag%2,
+			$lenList;
 		if($test) {
+			$lenList = 0;
 			$(this).siblings('input').prop('checked', true);
 			$(this).addClass('checked');
+			$('.main__right-part .slider__calculator .calc.multiselects .select-country .dropdown ul li label ').each(function(i, item) {
+				if(item.className === 'checked') {
+					$lenList++;
+				}
+			});
 		} else {
 			$(this).siblings('input').prop('checked', false);
 			$(this).removeClass('checked');
 		}
+		
+		if($lenList == 1) {
+			$spanValue = $(this).find('span').text();
+			$input.val($spanValue);
+		} else if(typeof $lenList == "undefined") {
+			$input.val('Страна посетителей');
+		} else {
+			$input.val("Выбрано " + $lenList + " страны");
+		}	
+	});
+	
+	$('.main__right-part .slider__calculator .calc.multiselects .select-interests .dropdown ul li input+label').click(function() {
+		var $input = $(this).closest('.dropdown').siblings('input'),
+			$spanValue,
+			$test = ++$flag%2,
+			$lenList;
+		if($test) {
+			$lenList = 0;
+			$(this).siblings('input').prop('checked', true);
+			$(this).addClass('checked');
+			$('.main__right-part .slider__calculator .calc.multiselects .select-interests .dropdown ul li label ').each(function(i, item) {
+				if(item.className === 'checked') {
+					$lenList++;
+				}
+			});
+		} else {
+			$(this).siblings('input').prop('checked', false);
+			$(this).removeClass('checked');
+		}
+		
+		if($lenList == 1) {
+			$spanValue = $(this).find('span').text();
+			$input.val($spanValue);
+		} else if(typeof $lenList == "undefined") {
+			$input.val('Интересы посетителей');
+		} else {
+			$input.val("Выбрано " + $lenList + " услуги");
+		}	
+	});
+	
+	$('.main__right-part .slider__calculator .calc.deadlines>div .dropdown ul li a').click(function(e) {
+		e.preventDefault();
+		$(this).closest('.dropdown').siblings('input').val($(this).text().trim());
+	});
+	
+	$('.main__left-part .main-selects .row-select .col-select .select-currency .dropdown ul li a').click(function(e) {
+		e.preventDefault();
+		$(this).closest('.dropdown').siblings('input').val($(this).text().trim());
+	});
+	
+	$('.main__left-part .main-selects .row-select .col-select .select-countr .dropdown ul li a').click(function() {
+		var $input = $(this).closest('.dropdown').siblings('input'),
+			$imgSrc = $(this).find('img').attr('src'),
+			$text = $(this).find('span').text().trim(),
+			$inputIcon = $(this).closest('.dropdown').siblings('.icons').find('.icon').find('img');
+			
+		$input.val($text);
+		$inputIcon.attr('src', $imgSrc);
+	});
+	
+	$('.main__left-part .main-selects .row-select .col-select .select-languages .dropdown ul li a').click(function() {
+		var $input = $(this).closest('.dropdown').siblings('input'),
+			$imgSrc = $(this).find('img').attr('src'),
+			$text = $(this).find('span').text().trim(),
+			$inputIcon = $(this).closest('.dropdown').siblings('.icons').find('.icon').find('img');
+			
+		$input.val($text);
+		$inputIcon.attr('src', $imgSrc);
+	});
+	
+	$('.modal-form .content .select-countr .dropdown ul li a').click(function() {
+		var $input = $(this).closest('.dropdown').siblings('input'),
+			$imgSrc = $(this).find('img').attr('src'),
+			$text = $(this).find('span').text().trim(),
+			$inputIcon = $(this).closest('.dropdown').siblings('.icons').find('.icon').find('img');
+			
+		$input.val($text);
+		$inputIcon.attr('src', $imgSrc);
 	});
 	
 	$cellsTable.mousedown(function() {
@@ -171,20 +276,21 @@ $(function() {
             $(this).css('display', 'none');
         });
     });
-    
+	
     $('.modal-form .modal-tabs ul li a').click(function(e) {
         e.preventDefault();
         $(this).parent().addClass('active').siblings().removeClass('active');
         $('.modal-form .modal-main-tab').removeClass('active').eq($(this).parent().index()).addClass('active');
     });
     
-    
     $('.modal-main-tab .tab-list ul li a').click(function(e) {
         e.preventDefault();
+		var $tabContent = $(this).closest('.tab-list').parent().next().find('.tab-content');
         $(this).parent().addClass('active').siblings().removeClass('active');
-        $('.modal-form .modal-main-tab .tab-content').removeClass('active').eq($(this).parent().index()).addClass('active');
+        $tabContent.removeClass('active').eq($(this).parent().index()).addClass('active');	
     });
-		
+	
+
 });
 
 function declension(num, expressions) {

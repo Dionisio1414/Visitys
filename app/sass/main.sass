@@ -340,6 +340,7 @@ input
                         line-height: 22px
                         transition: all .35s ease-in-out
                     i
+                        float: right
                         font-size: 24px
                         margin-left: 25px
                         transition: all .35s ease-in-out
@@ -357,6 +358,8 @@ input
                             color: $subaccent
                         i
                             color: $subaccent
+                            &::before
+                                content: "\f104"
         .tab-content
             display: none
             max-height: 400px
@@ -413,34 +416,45 @@ input
 	&__left-part
 		.globus
 			position: absolute
-			top: 0
-			left: 0
-			&__btn
-				position: relative
-				font-family: $bold
-				font-size: 24px
-				text-align: center
-				border-radius: 50%
-				border: 1px solid #fff
-				background-color: transparent
-				width: 30px
-				height: 30px
-				color: $subaccent
-				outline: 0
-				img
-					position: absolute
-					top: 50%
-					left: 50%
-					transform: translate(-50%, -50%)
+			top: 50%
+			transform: translateY(-50%)
+			margin-left: 80px
+			&__btn-container
+				position: absolute
+				bottom: 0
+				right: 0
+				.globus-btn
+					position: relative
+					font-family: $bold
+					font-size: 24px
+					text-align: center
+					border-radius: 50%
+					border: 1px solid #fff
+					background-color: transparent
+					width: 30px
+					height: 30px
+					color: $subaccent
+					outline: 0
+					img
+						position: absolute
+						top: 50%
+						left: 50%
+						transform: translate(-50%, -50%)
+					&.plus
+						margin-left: 10px
 			#globe
 				cursor: move
 				width: 100%!important
+				max-height: 603px
+				max-width: 603px
 				height: 100%!important
 					
 		header
+			position: relative
 			display: flex
 			padding-top: 8px
 			overflow: hidden
+			z-index: 5
 			.logo
 				display: block
 				max-width: 140px
@@ -812,7 +826,7 @@ input
 								background-color: #2E3355
 								width: 100%
 								border-radius: 0 0 4px 4px
-								max-height: 160px
+								max-height: 115px
 								overflow: auto
 								ul
 									padding: 10px 15px

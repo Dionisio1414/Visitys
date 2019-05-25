@@ -424,8 +424,10 @@
 						
 						<div class="globus">
 						    <canvas id="globe"></canvas>
-						    <button class="globus__btn minus"><img src="img/icons/minus.svg" alt=""></button>
-						    <button class="globus__btn plus"><img src="img/icons/plus.svg" alt=""></button>
+						    <div class="globus__btn-container">
+						    	<button class="globus-btn minus"><img src="img/icons/minus.svg" alt=""></button>
+						    	<button class="globus-btn plus"><img src="img/icons/plus.svg" alt=""></button>
+						    </div>
 						</div>
 						
 						<!-- End globe -->
@@ -484,12 +486,12 @@
 												</li>
 												<li>
 													<a href="#">
-														$
+														$!
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														$
+														$!!
 													</a>
 												</li>
 											</ul>
@@ -580,7 +582,7 @@
 													<ul>
 														<li>
 															<input type="checkbox" id="country-1">
-															<label for="country-1" class="checked"><span>Украина(-50%)</span></label>
+															<label for="country-1"><span>Украина(-50%)</span></label>
 														</li>
 														<li>
 															<input type="checkbox" id="country-2">
@@ -1185,13 +1187,13 @@
 			text.attachEvent("onmousewheel", handler);
 		  }
 		}
-		$('.main__left-part .globus__btn.minus').on({
+		$('.main__left-part .globus__btn-container .globus-btn.minus').on({
 		  click: function(){
 			scaleFactor -= 0.1;
 			scale()
 		  }
 		})
-		$('.main__left-part .globus__btn.plus').on({
+		$('.main__left-part .globus__btn-container .globus-btn.plus').on({
 		  click: function(){
 			scaleFactor += 0.1;
 			scale()
@@ -1410,10 +1412,12 @@
 
 
 		  /*select list*/
-		var countryTooltip = d3.select("body").append("div").attr("class", "countryTooltip"),
-		  countryList1 = d3.select("main").append("select").attr("name", "countries");
-
-
+		var countryTooltip = d3.select("body").append("div").attr("class", "countryTooltip");
+		 // countryList1 = d3.select("main").append("select").attr("name", "countries");
+		var countryLists = d3.select('.main__left-part').select('.main-selects').select('.row-select:first-child').select('.slct.select-countr').select('.dropdown ul');
+		console.log(countryLists);
+		var url = 'img/flags/ukraine.png';
+		
 
 
 		canvas
@@ -1431,11 +1435,11 @@
 		  /*select list*/
 		  var countryById = {}
 		  countries_list = topojson.feature(world, world.objects.countries).features
-
 		  cList.forEach(function(d) {
 			countryById[d.id] = d.name;
-			option = countryList1.append("option");
-			option.text(d.name);
+			option = countryLists.append("li").append("a");
+			option.append('img').attr('src', url);
+			option.append('span').text(d.name);
 			option.property("value", d.id);
 		  });
 
